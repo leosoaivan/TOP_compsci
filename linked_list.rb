@@ -1,9 +1,11 @@
-class Node
-  attr_accessor :next, :data
+#!/usr/bin/env ruby
 
-  def initialize(data)
+class Node
+  attr_accessor :next_node, :data
+
+  def initialize(data, next_node = nil)
     @data = data
-    @next = nil
+    @next_node = nil
   end
 end
 
@@ -20,19 +22,24 @@ class LinkedList
       @head = node
       @tail = node
     else
-      @tail.next = node
+      @tail.next_node = node
       @tail = node
     end
   end
 
-  def prepend(node)
+  def size
+    count = 0
     if @head.nil?
-      @head = node
-      @tail = node
+      return 0
     else
-      node.next = @head
-      @head = node
+      while @head != NIL
+        count += 1
+        @head = @head.next_node
+      end
+      count
     end
   end
 
 end
+
+new_list = LinkedList.new

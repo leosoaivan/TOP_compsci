@@ -3,7 +3,7 @@
 class Node
   attr_accessor :next_node, :data
 
-  def initialize(data, next_node = nil)
+  def initialize(data)
     @data = data
     @next_node = nil
   end
@@ -17,13 +17,25 @@ class LinkedList
     @tail = nil
   end
 
-  def append(node)
+  def append(data)
+    node = Node.new(data)
     if @head.nil?
       @head = node
       @tail = node
     else
       @tail.next_node = node
       @tail = node
+    end
+  end
+
+  def prepend(data)
+    node = Node.new(data)
+    if @head.nil?
+      @head = node
+      @tail = node
+    else
+      node.next_node = @head
+      @head = node
     end
   end
 
@@ -40,6 +52,12 @@ class LinkedList
     end
   end
 
-end
+  def head
+    @head
+  end
 
-new_list = LinkedList.new
+  def tail
+    @tail
+  end
+
+end

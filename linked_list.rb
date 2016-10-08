@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
+require 'pry'
 
 class Node
   attr_accessor :next_node, :data
 
-  def initialize(data)
+  def initialize(data, next_node = nil)
     @data = data
-    @next_node = nil
+    @next_node = next_node
   end
 end
 
@@ -53,17 +54,29 @@ class LinkedList
   end
 
   def head
-    @head
-  end
-
-  def tail
-    @tail
-  end
-
-  def auto_append(num)
-    num.times do
-      append(rand(100))
+    if @head.nil?
+      return nil
+    else
+      return @head.data, (@head.next_node.nil? ? nil : @head.next_node.data)
     end
   end
 
+  def tail
+    if @head.nil?
+      return nil
+    else
+      return @tail.data, @tail.next_node
+    end
+  end
+
+  def at(index)
+    temp = @head
+    (index).times do
+      temp = temp.next_node
+    end
+    temp.data
+  end
+
 end
+
+x = LinkedList.new

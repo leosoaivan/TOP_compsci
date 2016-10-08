@@ -45,9 +45,10 @@ class LinkedList
     if @head.nil?
       return 0
     else
-      while @head != NIL
+      temp = @head
+      while temp != NIL
         count += 1
-        @head = @head.next_node
+        temp = temp.next_node
       end
       count
     end
@@ -75,6 +76,22 @@ class LinkedList
       temp = temp.next_node
     end
     temp.data
+  end
+
+  def pop
+    if size == 0
+      nil
+    elsif size == 1
+      @head = nil
+      @tail = nil
+    else
+      temp = @head
+      (size - 2).times do
+        temp = temp.next_node
+      end
+      temp.next_node = nil
+      @tail = temp
+    end
   end
 
 end

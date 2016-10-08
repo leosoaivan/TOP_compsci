@@ -19,7 +19,7 @@ class LinkedList
 
   def append(data)
     node = Node.new(data)
-    if @head.nil?
+    if @head.nil? && @tail.nil?
       @head = node
       @tail = node
     else
@@ -30,7 +30,7 @@ class LinkedList
 
   def prepend(data)
     node = Node.new(data)
-    if @head.nil?
+    if @head.nil? && @tail.nil?
       @head = node
       @tail = node
     else
@@ -58,6 +58,12 @@ class LinkedList
 
   def tail
     @tail
+  end
+
+  def auto_append(num)
+    num.times do
+      append(rand(100))
+    end
   end
 
 end

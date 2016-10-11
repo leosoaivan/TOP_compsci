@@ -94,4 +94,32 @@ class LinkedList
     popped
   end
 
+  def contains?(data)
+    temp = @head
+    result = false
+    self.size.times do
+      temp.data == data ? result = true : temp = temp.next_node
+    end
+    result
+  end
+
+  def find(data)
+    if @head
+      temp = @head
+      counter = 0
+      while temp
+        if temp.data == data
+          return counter
+        else
+          counter += 1
+          temp = temp.next_node
+        end
+        counter
+      end
+      nil
+    else
+      nil
+    end
+  end
+
 end

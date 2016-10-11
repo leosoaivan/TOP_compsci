@@ -79,21 +79,19 @@ class LinkedList
   end
 
   def pop
+    popped = @head
+    temp = @head
     if size == 0
       nil
     elsif size == 1
-      @head = nil
-      @tail = nil
+      @head, @tail = nil,nil
     else
-      temp = @head
-      (size - 2).times do
-        temp = temp.next_node
-      end
+      (size - 2).times { temp = temp.next_node }
+      popped = temp.next_node
       temp.next_node = nil
       @tail = temp
     end
+    popped
   end
 
 end
-
-x = LinkedList.new

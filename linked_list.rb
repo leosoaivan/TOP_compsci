@@ -20,7 +20,7 @@ class LinkedList
 
   def append(data)
     node = Node.new(data)
-    if @head.nil? && @tail.nil?
+    if @head.nil?
       @head = node
       @tail = node
     else
@@ -31,7 +31,7 @@ class LinkedList
 
   def prepend(data)
     node = Node.new(data)
-    if @head.nil? && @tail.nil?
+    if @head.nil?
       @head = node
       @tail = node
     else
@@ -114,9 +114,22 @@ class LinkedList
           counter += 1
           temp = temp.next_node
         end
-        counter
       end
       nil
+    else
+      nil
+    end
+  end
+
+  def to_s
+    if @head
+      temp = @head
+      string = ""
+      while temp
+        string += "( #{temp.data} ) -> "
+        temp = temp.next_node
+      end
+      string += "nil"
     else
       nil
     end

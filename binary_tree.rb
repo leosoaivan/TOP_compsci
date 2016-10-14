@@ -1,3 +1,5 @@
+require 'pry'
+
 class Node
   attr_accessor :value, :parent, :lchild, :rchild
 
@@ -9,7 +11,7 @@ class Node
   end
 end
 
-# Builds a balance binary search tree using a sorted array
+# Recursiverly builds a balance binary search tree with a sorted array
 def build_tree_recs(ary, parent = nil)
   if ary.length <= 0
     return nil
@@ -26,6 +28,28 @@ def build_tree_recs(ary, parent = nil)
   end
 end
 
-x = [1,2,3,4,5]
+#Recursiverly builds an unbalanced binary search tree with an unsorted array
+def build_tree(ary)
+  root = Node.new(ary[0])
+  ary[1..-1].each do |elem|
+    insert(root, elem)
+  end
+  root
+end
 
-build_tree_recs(x)
+def insert(root, elem, parent = nil)
+  if root.nil?
+    root = Node.new(elem, parent)
+    parent.value < elem ? parent.rchild = root : parent.lchild = root
+  elsif elem > root.value
+    parent = root
+    root = root.rchild
+    insert(root, elem, parent)
+  elsif elem < root.value
+    parent = root
+    root = root.lchild
+    insert(root, elem, parent)
+  else
+    nil
+  end
+end

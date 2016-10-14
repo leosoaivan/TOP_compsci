@@ -11,21 +11,31 @@ class Node
   end
 end
 
-# Recursiverly builds a balance binary search tree with a sorted array
-def build_tree_recs(ary, parent = nil)
-  if ary.length <= 0
-    return nil
-  elsif ary.length == 1
-    new_node = Node.new(ary[0], parent)
-    new_node
-  else
-    mid_ind = ary.length / 2
-    new_node = Node.new(ary[mid_ind], parent)
-    new_node.lchild = build_tree_recs(ary[0..mid_ind - 1], new_node)
-    new_node.rchild = build_tree_recs(ary[mid_ind + 1..-1], new_node)
+class BST
+  attr_accessor :root
 
-    new_node
+  def initialize
+    @root = nil
   end
+
+  def balanced_tree(ary, parent = nil)
+    if ary.length <= 0
+      return nil
+    elsif ary.length == 1
+      new_node = Node.new(ary[0], parent)
+    else
+      mid_ind = ary.length / 2
+        if @root.nil?
+          @root = Node.new(ary[mid_ind], parent)
+          new_node = @root
+        else
+          new_node = Node.new(ary[mid_ind], parent)
+        end
+      new_node.lchild = balanced_tree(ary[0..mid_ind - 1], new_node)
+      new_node.rchild = balanced_tree(ary[mid_ind + 1..-1], new_node)
+    end
+  end
+
 end
 
 #Recursiverly builds an unbalanced binary search tree with an unsorted array

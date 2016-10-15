@@ -26,14 +26,16 @@ class BST
       new_node = Node.new(ary[0], parent)
     else
       mid_ind = ary.length / 2
-        if @root.nil?
-          @root = Node.new(ary[mid_ind], parent)
-          new_node = @root
-        else
-          new_node = Node.new(ary[mid_ind], parent)
-        end
+      if @root.nil?
+        @root = Node.new(ary[mid_ind], parent)
+        new_node = @root
+      else
+        new_node = Node.new(ary[mid_ind], parent)
+      end
       new_node.lchild = balanced_tree(ary[0..mid_ind - 1], new_node)
       new_node.rchild = balanced_tree(ary[mid_ind + 1..-1], new_node)
+
+      new_node
     end
   end
 
@@ -63,4 +65,21 @@ class BST
       nil
     end
   end
+
+  def breadth(target_value)
+    current = @root
+    queue = [current]
+    until queue.empty?
+      if queue[0].value == target_value
+        return queue[0]
+      else
+        queue << queue[0].lchild unless queue[0].lchild.nil?
+        queue << queue[0].rchild unless queue[0].rchild.nil?
+        queue.shift
+      end
+    end
+
+    return nil if queue.empty?
+  end
+
 end

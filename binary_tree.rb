@@ -18,6 +18,7 @@ class BST
     @root = nil
   end
 
+  #Recursivley builds a balanced binary search tree with a sorted array
   def balanced_tree(ary, parent = nil)
     if ary.length <= 0
       return nil
@@ -36,30 +37,30 @@ class BST
     end
   end
 
-end
-
-#Recursiverly builds an unbalanced binary search tree with an unsorted array
-def build_tree(ary)
-  root = Node.new(ary[0])
-  ary[1..-1].each do |elem|
-    insert(root, elem)
+  #Recursiverly builds an unbalanced binary search tree with an unsorted array
+  def build_tree(ary)
+    @root = Node.new(ary[0])
+    temp_root = @root
+    ary[1..-1].each do |elem|
+      insert(temp_root, elem)
+    end
+    root
   end
-  root
-end
 
-def insert(root, elem, parent = nil)
-  if root.nil?
-    root = Node.new(elem, parent)
-    parent.value < elem ? parent.rchild = root : parent.lchild = root
-  elsif elem > root.value
-    parent = root
-    root = root.rchild
-    insert(root, elem, parent)
-  elsif elem < root.value
-    parent = root
-    root = root.lchild
-    insert(root, elem, parent)
-  else
-    nil
+  def insert(root, elem, parent = nil)
+    if root.nil?
+      root = Node.new(elem, parent)
+      parent.value < elem ? parent.rchild = root : parent.lchild = root
+    elsif elem > root.value
+      parent = root
+      root = root.rchild
+      insert(root, elem, parent)
+    elsif elem < root.value
+      parent = root
+      root = root.lchild
+      insert(root, elem, parent)
+    else
+      nil
+    end
   end
 end

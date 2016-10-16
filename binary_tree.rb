@@ -67,8 +67,7 @@ class BST
   end
 
   def breadth(target_value)
-    current = @root
-    queue = [current]
+    queue = [@root]
     until queue.empty?
       if queue[0].value == target_value
         return queue[0]
@@ -80,6 +79,23 @@ class BST
     end
 
     return nil if queue.empty?
+  end
+
+  #Pre-Order Traversal of binary search tree instances
+  def depth(target_value)
+    stack = [@root]
+    until stack.empty?
+      if stack[0].value == target_value
+        return stack[0]
+      else
+        current = stack[0]
+        stack.shift
+        stack.unshift(current.rchild) unless current.rchild.nil?
+        stack.unshift(current.lchild) unless current.lchild.nil?
+      end
+    end
+
+    return nil if stack.empty?
   end
 
 end

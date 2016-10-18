@@ -103,7 +103,6 @@ class BST
 
     left = depth_recs(target_value, current.lchild) unless current.lchild == nil
     right = depth_recs(target_value, current.rchild) unless current.rchild == nil
-
     left || right
   end
 

@@ -7,4 +7,4 @@ The implementation of a linked list, a basic data structure (absent in Ruby). Cr
 
 
 <h3>Binary Search Tree</h3>
-The implementation of a binary search tree (BST), another basic data structure (absent in Ruby). Created with a <code>Node</code> class and a <code>BST</code> class. This implementation includes recursive methods to create a BSTs from both sorted and unsorted arrays. Also included are a few traversal methods. Found at <a href="https://github.com/leosoaivan/TOP_compsci/blob/master/binary_tree.rb">binary_tree.rb</a>.
+The implementation of a binary search tree (BST), another basic data structure (absent in Ruby). Created with a <code>Node</code> class and a <code>BST</code> class. This implementation includes recursive methods to create BSTs from both sorted and unsorted arrays. Also included are a few traversal methods. Found at <a href="https://github.com/leosoaivan/TOP_compsci/blob/master/binary_tree.rb">binary_tree.rb</a>.

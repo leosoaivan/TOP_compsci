@@ -1,5 +1,14 @@
-require './knights'
-require './board'
+require 'knights'
+require 'board'
+
+class Travails
+  def initialize
+    system "clear"
+    start_message
+    board = Board.new
+    board.print_board
+  end
+end
 
 def start_message
   puts "*********************************************************************"
@@ -13,7 +22,20 @@ def start_message
   puts
 end
 
-system "clear"
-start_message
-x = Board.new
-x.print_board
+# def request_start
+#   begin
+#     print "Where would you like to start?  "
+#     start = gets.chomp
+#   # print "Where would you like to go?  "
+#   # destination = gets.chomp
+#   until validate_point(start) == true
+# end
+
+def validate_point(point)
+  valid = false
+  if point.length > 2 || point.length < 2
+    valid
+  else
+    valid = true
+  end
+end

@@ -8,24 +8,7 @@ class Knight
   def valid?
     false unless ( 0 < @position[0] < 7 && 0 < @position[1] < 7)
   end
-
-class ChessBoard
-
-  def initialize
-    @graph =  [ ["x", "x", "x", "x", "x", "x", "x", "x"],
-                ["x", "x", "x", "x", "x", "x", "x", "x"],
-                ["x", "x", "x", "x", "x", "x", "x", "x"],
-                ["x", "x", "x", "x", "x", "x", "x", "x"],
-                ["x", "x", "x", "x", "x", "x", "x", "x"],
-                ["x", "x", "x", "x", "x", "x", "x", "x"],
-                ["x", "x", "x", "x", "x", "x", "x", "x"],
-                ["x", "x", "x", "x", "x", "x", "x", "x"] ]
-  end
 end
-
-x = ChessBoard.new
-
-
 
   # def print_draw
   #   puts "   a  b  c  d  e  f  g  h "

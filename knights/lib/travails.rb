@@ -1,5 +1,5 @@
-require 'knights'
-require 'board'
+require './knights'
+require './board'
 
 class Travails
   def initialize
@@ -22,20 +22,34 @@ def start_message
   puts
 end
 
-# def request_start
-#   begin
-#     print "Where would you like to start?  "
-#     start = gets.chomp
-#   # print "Where would you like to go?  "
-#   # destination = gets.chomp
-#   until validate_point(start) == true
-# end
+def request_start
+  begin
+    print "Where would you like to start?  "
+    start = gets.chomp.downcase
+  end until validate_point(start) == true
+  start = start[0..1]
+  puts "Your starting point is #{start}."
+end
+
+def request_dest
+  begin
+    print "Where would you like to go?  "
+    dest = gets.chomp.downcase
+  end until validate_point(dest) == true
+  dest = dest[0..1]
+  puts "Your destination point is #{dest}."
+end
 
 def validate_point(point)
-  valid = false
-  if point.length > 2 || point.length < 2
-    valid
+  coord = point.split(//)
+  if /[a-h]/.match(coord[0]) && /[1-8]/.match(coord[1])
+    true
   else
-    valid = true
+    puts "That is not a valid move."
+    false
   end
 end
+
+x = Travails.new
+
+request_start

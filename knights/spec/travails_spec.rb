@@ -1,6 +1,6 @@
 require 'travails.rb'
 
-describe "Travails" do
+describe Travails do
 
   describe "#validate_coord" do
     it "returns FALSE when points are not 2 characters" do
@@ -18,9 +18,9 @@ describe "Travails" do
   end
 
   describe "#convert_coord" do
-    it "returns an array position from a chess board coordinate" do
+    it "returns an array coordinate from a chess board coordinate" do
       point = "a8"
-      expect(convert_coord(point)).to eql("00")
+      expect(convert_coord(point)).to eql([0, 0])
     end
   end
 end

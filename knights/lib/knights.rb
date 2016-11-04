@@ -1,33 +1,35 @@
-class Knight
+class KnightNode
 
-  def initialize
-    @name = "K"
-    @position = [7,0]
+  def initialize(location)
+    @location = nil
+    @children = []
   end
 
-  def valid?
-    false unless ( 0 < @position[0] < 7 && 0 < @position[1] < 7)
-  end
 end
 
-  # def print_draw
-  #   puts "   a  b  c  d  e  f  g  h "
-  #   puts ""
-  #   puts "8"
-  #   puts ""
-  #   puts "7"
-  #   puts ""
-  #   puts "6"
-  #   puts ""
-  #   puts "5"
-  #   puts ""
-  #   puts "4"
-  #   puts ""
-  #   puts "3"
-  #   puts ""
-  #   puts "2"
-  #   puts ""
-  #   puts "1"
-  #   puts ""
-  #   puts "   a  b  c  d  e  f  g  h "
-  # end
+class KnightTree
+
+  KNIGHT_MOVES = [
+    [-2, 1], [-2, -1], [-1, 2], [-1, -2],
+    [1, -2], [1, 2], [2, 1], [2, -1]
+  ]
+
+  def initialize
+  end
+
+  def possible_moves(location)
+    possibles = []
+    KNIGHT_MOVES.each do |move|
+      possible = [location[0] + move[0], location[1] + move[1]]
+      if valid_moves(possible)
+        possibles << possible
+      end
+    end
+    possibles
+  end
+
+  def valid_moves(possible)
+    true if (possible[0] >= 0 && possible[0] <= 7) && (possible[1] >= 0 && possible[1] <= 7)
+  end
+
+end

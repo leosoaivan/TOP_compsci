@@ -18,9 +18,13 @@ describe Travails do
   end
 
   describe "#convert_coord" do
-    it "returns an array coordinate from a chess board coordinate" do
+    it "returns a coordinate from a chess board coordinate" do
       point = "a8"
       expect(convert_coord(point)).to eql([0, 0])
+    end
+    it "returns an array" do
+      point = "a8"
+      expect(convert_coord(point)).to be_an(Array)
     end
   end
 end

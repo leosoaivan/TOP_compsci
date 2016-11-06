@@ -1,6 +1,17 @@
 class Board
+  attr_accessor :c
 
   def initialize
+    @c = [
+      [" "," "," "," "," "," "," "," "],
+      [" "," "," "," "," "," "," "," "],
+      [" "," "," "," "," "," "," "," "],
+      [" "," "," "," "," "," "," "," "],
+      [" "," "," "," "," "," "," "," "],
+      [" "," "," "," "," "," "," "," "],
+      [" "," "," "," "," "," "," "," "],
+      [" "," "," "," "," "," "," "," "],
+    ]
   end
 
   def start_message
@@ -18,24 +29,47 @@ class Board
   def print_board
     puts "    a   b   c   d   e   f   g   h "
     puts "  +---+---+---+---+---+---+---+---+"
-    puts "8 |   |   |   |   |   |   |   |   | 8"
+    print "8 |"
+    @c[0].each { |elem| print " #{elem} |" }
+    puts " 8 \n"
     puts "  +---+---+---+---+---+---+---+---+"
-    puts "7 |   |   |   |   |   |   |   |   | 7"
+    print "7 |"
+    @c[1].each { |elem| print " #{elem} |" }
+    puts " 7 \n"
     puts "  +---+---+---+---+---+---+---+---+"
-    puts "6 |   |   |   |   |   |   |   |   | 6"
+    print "6 |"
+    @c[2].each { |elem| print " #{elem} |" }
+    puts " 6 \n"
     puts "  +---+---+---+---+---+---+---+---+"
-    puts "5 |   |   |   |   |   |   |   |   | 5"
+    print "5 |"
+    @c[3].each { |elem| print " #{elem} |" }
+    puts " 5 \n"
     puts "  +---+---+---+---+---+---+---+---+"
-    puts "4 |   |   |   |   |   |   |   |   | 4"
+    print "4 |"
+    @c[4].each { |elem| print " #{elem} |" }
+    puts " 4 \n"
     puts "  +---+---+---+---+---+---+---+---+"
-    puts "3 |   |   |   |   |   |   |   |   | 3"
+    print "3 |"
+    @c[5].each { |elem| print " #{elem} |" }
+    puts " 3 \n"
     puts "  +---+---+---+---+---+---+---+---+"
-    puts "2 |   |   |   |   |   |   |   |   | 2"
+    print "2 |"
+    @c[6].each { |elem| print " #{elem} |" }
+    puts " 2 \n"
     puts "  +---+---+---+---+---+---+---+---+"
-    puts "1 |   |   |   |   |   |   |   |   | 1"
+    print "1 |"
+    @c[7].each { |elem| print " #{elem} |" }
+    puts " 1 \n"
     puts "  +---+---+---+---+---+---+---+---+"
-    puts "    a   b   c   d   e   f   g   h "
-    puts
+    puts "    a   b   c   d   e   f   g   h \n\n"
+  end
+
+  def write_board(array)
+    counter = 1
+    array.each do |elem|
+      @c[elem[0]][elem[1]] = counter
+      counter += 1
+    end
   end
 
 end

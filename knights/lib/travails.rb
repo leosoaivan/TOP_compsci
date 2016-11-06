@@ -24,19 +24,21 @@ class Travails
     @graph = nil
     @path_array = []
     @path_coord = []
+    @board.start_message
     game_start
   end
 
   def game_start
-    @board.start_message
     @board.print_board
     request_start
     request_dest
-    create_knight
-    create_graph
+    create_knight_board
     create_path
     convert_array
-    binding
+    system "clear"
+    @board.start_message
+    @board.write_board(@path_array)
+    @board.print_board
     display_path
   end
 
@@ -71,11 +73,8 @@ class Travails
     return ((y.to_i - 8).abs), (BOARD_MAP["#{x}"])
   end
 
-  def create_knight
+  def create_knight_board
     @knight = KnightNode.new(@start)
-  end
-
-  def create_graph
     @graph = KnightGraph.new(@knight)
   end
 
@@ -100,7 +99,9 @@ class Travails
       path += "=> #{elem} "
     end
     puts path
+    puts "You made it in #{@path_coord.length - 1} moves! \n\n"
   end
+
 end
 
 x = Travails.new

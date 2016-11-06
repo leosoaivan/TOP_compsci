@@ -35,6 +35,7 @@ class Board
     puts "1 |   |   |   |   |   |   |   |   | 1"
     puts "  +---+---+---+---+---+---+---+---+"
     puts "    a   b   c   d   e   f   g   h "
+    puts
   end
 
 end

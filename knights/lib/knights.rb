@@ -11,7 +11,8 @@ class KnightNode
 end
 
 class KnightGraph
-  attr_accessor :queue, :visited
+
+  attr_accessor :path
 
   KNIGHT_MOVES = [
     [-2, 1], [-2, -1], [-1, 2], [-1, -2],

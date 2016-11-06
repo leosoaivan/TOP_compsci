@@ -1,12 +1,9 @@
 require_relative '../lib/knights'
 require_relative '../lib/board'
-require 'pry'
 
 class Travails
   def initialize
     @board = Board.new
-    @start = nil
-    @dest = nil
   end
 
   def game_start
